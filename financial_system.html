@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinFindr Inc Financial System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #17a2b8; color: white; padding: 10px 0; text-align: center; }
+        .container { padding: 20px; }
+        footer { text-align: center; padding: 10px 0; background: #f1f1f1; }
+        button { margin: 10px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FinFindr Inc Financial System</h1>
+    </header>
+    <div class="container">
+        <h2>Financial AI Copilot</h2>
+        <button onclick="askAI('What are the best investment strategies right now?')">What are the best investment strategies right now?</button>
+        <button onclick="askAI('How can I improve cash flow management?')">How can I improve cash flow management?</button>
+        <div id="response"></div>
+    </div>
+    <footer>
+        <p>&copy; 2025 FinFindr Inc. All rights reserved.</p>
+    </footer>
+    <script>
+        function askAI(question) {
+            const responses = {
+                'What are the best investment strategies right now?': 'Current best investment strategies include diversifying your portfolio, focusing on index funds, and considering real estate investments.',
+                'How can I improve cash flow management?': 'Improving cash flow management can be achieved by forecasting cash needs, reducing overhead costs, and ensuring timely invoicing.',
+            };
+            document.getElementById('response').innerText = responses[question] || "I'm not sure about that yet.";
+        }
+    </script>
+</body>
+</html>
