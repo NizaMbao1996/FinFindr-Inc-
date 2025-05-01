@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinFindr Inc Financial System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #17a2b8; color: white; padding: 10px 0; text-align: center; }
+        .container { padding: 20px; }
+        footer { text-align: center; padding: 10px 0; background: #f1f1f1; }
+        button { margin: 10px; padding: 10px 20px; }
+        input { margin: 10px; padding: 10px; width: 80%; }
+        .question-list { margin-top: 20px; }
+        .workspace { margin-top: 30px; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FinFindr Inc Financial System</h1>
+    </header>
+    <div class="container">
+        <h2>Financial AI Copilot</h2>
+        <p>This AI Copilot is a prototype and is continuously being enhanced. Your data is secure and not shared with third parties.</p>
+        <input type="text" id="userQuestion" placeholder="Ask your question here...">
+        <button onclick="askAI()">Submit</button>
+        <button onclick="startVoiceInput()">🎤 Voice Input</button>
+        <div id="response"></div>
+        <div class="question-list">
+            <h3>Available Questions:</h3>
+            <ul>
+                <li>What are the best investment strategies right now?</li>
+                <li>How can I improve cash flow management?</li>
+                <li>What is the difference between stocks and bonds?</li>
+                <li>How can I reduce business expenses?</li>
+                <li>What is a budget, and why is it important?</li>
+                <li>What are the key financial statements?</li>
+                <li>How can I improve my credit score?</li>
+                <li>What is the purpose of an emergency fund?</li>
+                <li>How do interest rates affect investments?</li>
+                <li>What is the importance of diversification?</li>
+            </ul>
+        </div>
+        <div class="workspace">
+            <h3>Your Workspace</h3>
+            <textarea id="workspaceInput" placeholder="Collect your notes and data here..." rows="5" style="width: 100%;"></textarea>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 FinFindr Inc. All rights reserved.</p>
+    </footer>
+    <script>
+        const responses = {
+            'What are the best investment strategies right now?': 'Current best investment strategies include diversifying your portfolio, focusing on index funds, and considering real estate investments.',
+            'How can I improve cash flow management?': 'Improving cash flow management can be achieved by forecasting cash needs, reducing overhead costs, and ensuring timely invoicing.',
+            'What is the difference between stocks and bonds?': 'Stocks represent ownership in a company, while bonds are loans made to a company or government.',
+            'How can I reduce business expenses?': 'Analyze spending, negotiate with suppliers, and consider outsourcing non-core functions.',
+            'What is a budget, and why is it important?': 'A budget is a financial plan that helps manage income and expenses, ensuring financial stability.',
+            'What are the key financial statements?': 'The key financial statements are the income statement, balance sheet, and cash flow statement.',
+            'How can I improve my credit score?': 'To improve your credit score, pay bills on time, reduce debt, and avoid opening too many new accounts at once.',
+            'What is the purpose of an emergency fund?': 'An emergency fund provides financial security and helps cover unexpected expenses without going into debt.',
+            'How do interest rates affect investments?': 'Interest rates influence borrowing costs and can impact investment yields and market performance.',
+            'What is the importance of diversification?': 'Diversification reduces risk by spreading investments across various assets, mitigating potential losses.',
+        };
+
+        function askAI() {
+            const question = document.getElementById('userQuestion').value;
+            const answer = responses[question] || "I'm not sure about that yet.";
+            document.getElementById('response').innerText = answer;
+        }
+
+        function startVoiceInput() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const question = event.results[0][0].transcript;
+                document.getElementById('userQuestion').value = question;
+                askAI();
+            };
+
+            recognition.onerror = function(event) {
+                document.getElementById('response').innerText = "Error occurred: " + event.error;
+            };
+        }
+    </script>
+</body>
+</html>

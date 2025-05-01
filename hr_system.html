@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinFindr Inc HR System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #28a745; color: white; padding: 10px 0; text-align: center; }
+        .container { padding: 20px; }
+        footer { text-align: center; padding: 10px 0; background: #f1f1f1; }
+        button { margin: 10px; padding: 10px 20px; }
+        input { margin: 10px; padding: 10px; width: 80%; }
+        .question-list { margin-top: 20px; }
+        .workspace { margin-top: 30px; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FinFindr Inc HR System</h1>
+    </header>
+    <div class="container">
+        <h2>Human Resources AI Copilot</h2>
+        <p>This AI Copilot is a prototype and is continuously being enhanced. Your data is secure and not shared with third parties.</p>
+        <input type="text" id="userQuestion" placeholder="Ask your question here...">
+        <button onclick="askAI()">Submit</button>
+        <button onclick="startVoiceInput()">🎤 Voice Input</button>
+        <div id="response"></div>
+        <div class="question-list">
+            <h3>Available Questions:</h3>
+            <ul>
+                <li>What strategies can improve employee engagement?</li>
+                <li>How can I conduct effective performance reviews?</li>
+                <li>What is the importance of diversity in the workplace?</li>
+                <li>How can I handle workplace conflicts?</li>
+                <li>What are the benefits of employee training?</li>
+                <li>How do I create a positive workplace culture?</li>
+                <li>What is employee turnover?</li>
+                <li>How can I improve team collaboration?</li>
+                <li>What are effective recruitment strategies?</li>
+                <li>How can I measure employee satisfaction?</li>
+            </ul>
+        </div>
+        <div class="workspace">
+            <h3>Your Workspace</h3>
+            <textarea id="workspaceInput" placeholder="Collect your notes and data here..." rows="5" style="width: 100%;"></textarea>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 FinFindr Inc. All rights reserved.</p>
+    </footer>
+    <script>
+        const responses = {
+            'What strategies can improve employee engagement?': 'To improve employee engagement, focus on regular feedback, recognition programs, and providing professional development opportunities.',
+            'How can I conduct effective performance reviews?': 'Effective performance reviews should include clear criteria, regular feedback sessions, and a focus on goal-setting and development.',
+            'What is the importance of diversity in the workplace?': 'Diversity enhances creativity and innovation, improves employee satisfaction, and can lead to better decision-making.',
+            'How can I handle workplace conflicts?': 'Address conflicts promptly, listen to all parties, and seek a mutually agreeable solution.',
+            'What are the benefits of employee training?': 'Employee training improves skills, increases productivity, and enhances job satisfaction.',
+            'How do I create a positive workplace culture?': 'Foster open communication, recognize achievements, and promote work-life balance.',
+            'What is employee turnover?': 'Employee turnover refers to the rate at which employees leave a company and need to be replaced.',
+            'How can I improve team collaboration?': 'Encourage open communication, use collaborative tools, and organize team-building activities.',
+            'What are effective recruitment strategies?': 'Effective recruitment strategies include using social media, networking, and offering employee referrals.',
+            'How can I measure employee satisfaction?': 'Employee satisfaction can be measured through surveys, feedback forms, and regular check-ins.',
+        };
+
+        function askAI() {
+            const question = document.getElementById('userQuestion').value;
+            const answer = responses[question] || "I'm not sure about that yet.";
+            document.getElementById('response').innerText = answer;
+        }
+
+        function startVoiceInput() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const question = event.results[0][0].transcript;
+                document.getElementById('userQuestion').value = question;
+                askAI();
+            };
+
+            recognition.onerror = function(event) {
+                document.getElementById('response').innerText = "Error occurred: " + event.error;
+            };
+        }
+    </script>
+</body>
+</html>
