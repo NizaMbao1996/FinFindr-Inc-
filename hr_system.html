@@ -4,51 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinFindr Inc HR System</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: #28a745; color: white; padding: 10px 0; text-align: center; }
-        .container { padding: 20px; }
-        footer { text-align: center; padding: 10px 0; background: #f1f1f1; }
-        button { margin: 10px; padding: 10px 20px; }
-        input { margin: 10px; padding: 10px; width: 80%; }
-        .question-list { margin-top: 20px; }
-        .workspace { margin-top: 30px; border: 1px solid #ccc; padding: 10px; }
-    </style>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>FinFindr Inc HR System</h1>
+        <div class="app-container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>FinFindr Inc</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="hr_system.html"><i class="fas fa-users"></i> HR System</a></li>
+                        <li><a href="financial_system.html"><i class="fas fa-chart-bar"></i> Financial System</a></li>
+                        <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
-    <div class="container">
-        <h2>Human Resources AI Copilot</h2>
-        <p>This AI Copilot is a prototype and is continuously being enhanced. Your data is secure and not shared with third parties.</p>
-        <input type="text" id="userQuestion" placeholder="Ask your question here...">
-        <button onclick="askAI()">Submit</button>
-        <button onclick="startVoiceInput()">🎤 Voice Input</button>
-        <div id="response"></div>
-        <div class="question-list">
-            <h3>Available Questions:</h3>
-            <ul>
-                <li>What strategies can improve employee engagement?</li>
-                <li>How can I conduct effective performance reviews?</li>
-                <li>What is the importance of diversity in the workplace?</li>
-                <li>How can I handle workplace conflicts?</li>
-                <li>What are the benefits of employee training?</li>
-                <li>How do I create a positive workplace culture?</li>
-                <li>What is employee turnover?</li>
-                <li>How can I improve team collaboration?</li>
-                <li>What are effective recruitment strategies?</li>
-                <li>How can I measure employee satisfaction?</li>
-            </ul>
+
+    <main class="main-content">
+        <div class="app-container">
+            <h1 class="section-title">Human Resources AI Copilot</h1>
+            <p class="section-subtitle">Your intelligent assistant for HR management and employee development</p>
+
+            <div class="input-area">
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="text" id="userQuestion" placeholder="Ask your HR-related question here...">
+                    </div>
+                    <button class="btn btn-primary" onclick="askAI()">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Submit</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="startVoiceInput()">
+                        <i class="fas fa-microphone"></i>
+                        <span>Voice Input</span>
+                    </button>
+                </div>
+                <div id="response" class="response-area"></div>
+            </div>
+
+            <section class="question-section">
+                <h2 class="section-title">Suggested Questions</h2>
+                <p class="section-subtitle">Click on any card to get instant answers to common HR questions</p>
+
+                <div class="cards-container">
+                    <div class="card" onclick="setQuestion('What strategies can improve employee engagement?')">
+                        <div class="card-content">
+                            <i class="fas fa-users-cog"></i> What strategies can improve employee engagement?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How can I conduct effective performance reviews?')">
+                        <div class="card-content">
+                            <i class="fas fa-clipboard-check"></i> How can I conduct effective performance reviews?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What is the importance of diversity in the workplace?')">
+                        <div class="card-content">
+                            <i class="fas fa-globe"></i> What is the importance of diversity in the workplace?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How can I handle workplace conflicts?')">
+                        <div class="card-content">
+                            <i class="fas fa-balance-scale"></i> How can I handle workplace conflicts?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What are the benefits of employee training?')">
+                        <div class="card-content">
+                            <i class="fas fa-graduation-cap"></i> What are the benefits of employee training?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How do I create a positive workplace culture?')">
+                        <div class="card-content">
+                            <i class="fas fa-heart"></i> How do I create a positive workplace culture?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What is employee turnover?')">
+                        <div class="card-content">
+                            <i class="fas fa-exchange-alt"></i> What is employee turnover?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How can I improve team collaboration?')">
+                        <div class="card-content">
+                            <i class="fas fa-hands-helping"></i> How can I improve team collaboration?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What are effective recruitment strategies?')">
+                        <div class="card-content">
+                            <i class="fas fa-user-plus"></i> What are effective recruitment strategies?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How can I measure employee satisfaction?')">
+                        <div class="card-content">
+                            <i class="fas fa-smile"></i> How can I measure employee satisfaction?
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="workspace-section">
+                <h2 class="section-title">Your Workspace</h2>
+                <p class="section-subtitle">Save your notes and important information for future reference</p>
+
+                <div class="workspace-container">
+                    <div class="workspace-title">
+                        <i class="fas fa-sticky-note"></i>
+                        <h3>Notes & Research</h3>
+                    </div>
+                    <textarea id="workspaceInput" class="workspace-textarea" placeholder="Collect your notes and data here..."></textarea>
+                </div>
+            </section>
         </div>
-        <div class="workspace">
-            <h3>Your Workspace</h3>
-            <textarea id="workspaceInput" placeholder="Collect your notes and data here..." rows="5" style="width: 100%;"></textarea>
-        </div>
-    </div>
+    </main>
+
     <footer>
-        <p>© 2025 FinFindr Inc. All rights reserved.</p>
+        <div class="app-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>FinFindr Inc</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 FinFindr Inc. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
     <script>
         const responses = {
             'What strategies can improve employee engagement?': 'To improve employee engagement, focus on regular feedback, recognition programs, and providing professional development opportunities.',
@@ -67,6 +167,11 @@
             const question = document.getElementById('userQuestion').value;
             const answer = responses[question] || "I'm not sure about that yet.";
             document.getElementById('response').innerText = answer;
+        }
+
+        function setQuestion(question) {
+            document.getElementById('userQuestion').value = question;
+            askAI();
         }
 
         function startVoiceInput() {

@@ -4,50 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinFindr Inc Financial System</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: #17a2b8; color: white; padding: 10px 0; text-align: center; }
-        .container { padding: 20px; }
-        footer { text-align: center; padding: 10px 0; background: #f1f1f1; }
-        button { margin: 10px; padding: 10px 20px; }
-        input { margin: 10px; padding: 10px; width: 80%; }
-        .question-list { margin-top: 20px; }
-        .workspace { margin-top: 30px; border: 1px solid #ccc; padding: 10px; }
-    </style>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>FinFindr Inc Financial System</h1>
+        <div class="app-container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>FinFindr Inc</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="hr_system.html"><i class="fas fa-users"></i> HR System</a></li>
+                        <li><a href="financial_system.html"><i class="fas fa-chart-bar"></i> Financial System</a></li>
+                        <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
-    <div class="container">
-        <h2>Financial AI Copilot</h2>
-        <p>This AI Copilot is a prototype and is continuously being enhanced. Your data is secure and not shared with third parties.</p>
-        <input type="text" id="userQuestion" placeholder="Ask your question here...">
-        <button onclick="askAI()">Submit</button>
-        <button onclick="startVoiceInput()">🎤 Voice Input</button>
-        <div id="response"></div>
-        <div class="question-list">
-            <h3>Available Questions:</h3>
-            <ul>
-                <li>What are the best investment strategies right now?</li>
-                <li>How can I improve cash flow management?</li>
-                <li>What is the difference between stocks and bonds?</li>
-                <li>How can I reduce business expenses?</li>
-                <li>What is a budget, and why is it important?</li>
-                <li>What are the key financial statements?</li>
-                <li>How can I improve my credit score?</li>
-                <li>What is the purpose of an emergency fund?</li>
-                <li>How do interest rates affect investments?</li>
-                <li>What is the importance of diversification?</li>
-            </ul>
+
+    <main class="main-content">
+        <div class="app-container">
+            <h1 class="section-title">Financial AI Copilot</h1>
+            <p class="section-subtitle">Your intelligent assistant for financial management and investment decisions</p>
+
+            <div class="input-area">
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="text" id="userQuestion" placeholder="Ask your finance-related question here...">
+                    </div>
+                    <button class="btn btn-primary" onclick="askAI()">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Submit</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="startVoiceInput()">
+                        <i class="fas fa-microphone"></i>
+                        <span>Voice Input</span>
+                    </button>
+                </div>
+                <div id="response" class="response-area"></div>
+            </div>
+
+            <section class="question-section">
+                <h2 class="section-title">Suggested Questions</h2>
+                <p class="section-subtitle">Click on any card to get instant answers to common financial questions</p>
+
+                <div class="cards-container">
+                    <div class="card" onclick="setQuestion('What are the best investment strategies right now?')">
+                        <div class="card-content">
+                            <i class="fas fa-chart-line"></i> What are the best investment strategies right now?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How can I improve cash flow management?')">
+                        <div class="card-content">
+                            <i class="fas fa-money-bill-wave"></i> How can I improve cash flow management?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What is the difference between stocks and bonds?')">
+                        <div class="card-content">
+                            <i class="fas fa-exchange-alt"></i> What is the difference between stocks and bonds?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How can I reduce business expenses?')">
+                        <div class="card-content">
+                            <i class="fas fa-hand-holding-usd"></i> How can I reduce business expenses?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What is a budget, and why is it important?')">
+                        <div class="card-content">
+                            <i class="fas fa-calculator"></i> What is a budget, and why is it important?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What are the key financial statements?')">
+                        <div class="card-content">
+                            <i class="fas fa-file-invoice-dollar"></i> What are the key financial statements?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How can I improve my credit score?')">
+                        <div class="card-content">
+                            <i class="fas fa-credit-card"></i> How can I improve my credit score?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What is the purpose of an emergency fund?')">
+                        <div class="card-content">
+                            <i class="fas fa-piggy-bank"></i> What is the purpose of an emergency fund?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('How do interest rates affect investments?')">
+                        <div class="card-content">
+                            <i class="fas fa-percentage"></i> How do interest rates affect investments?
+                        </div>
+                    </div>
+                    <div class="card" onclick="setQuestion('What is the importance of diversification?')">
+                        <div class="card-content">
+                            <i class="fas fa-project-diagram"></i> What is the importance of diversification?
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="workspace-section">
+                <h2 class="section-title">Your Workspace</h2>
+                <p class="section-subtitle">Save your notes and important information for future reference</p>
+
+                <div class="workspace-container">
+                    <div class="workspace-title">
+                        <i class="fas fa-sticky-note"></i>
+                        <h3>Notes & Research</h3>
+                    </div>
+                    <textarea id="workspaceInput" class="workspace-textarea" placeholder="Collect your notes and data here..."></textarea>
+                </div>
+            </section>
         </div>
-        <div class="workspace">
-            <h3>Your Workspace</h3>
-            <textarea id="workspaceInput" placeholder="Collect your notes and data here..." rows="5" style="width: 100%;"></textarea>
-        </div>
-    </div>
+    </main>
+
     <footer>
-        <p>© 2025 FinFindr Inc. All rights reserved.</p>
+        <div class="app-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>FinFindr Inc</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 FinFindr Inc. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
     <script>
         const responses = {
@@ -67,6 +166,11 @@
             const question = document.getElementById('userQuestion').value;
             const answer = responses[question] || "I'm not sure about that yet.";
             document.getElementById('response').innerText = answer;
+        }
+
+        function setQuestion(question) {
+            document.getElementById('userQuestion').value = question;
+            askAI();
         }
 
         function startVoiceInput() {
